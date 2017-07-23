@@ -41,7 +41,7 @@ Here is an example of how the plugin is used in a 'real-world' project - [gradle
 
 ### Configuration
 
-These are all possible configuration options and its default values:
+These are all possible configuration options:
 
 ```groovy
 kafkaDeserializers {
