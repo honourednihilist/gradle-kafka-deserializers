@@ -1,0 +1,57 @@
+plugins {
+    id 'com.gradle.plugin-publish' version '0.9.7'
+}
+
+apply plugin: 'java-gradle-plugin'
+apply plugin: 'maven'
+
+group = 'com.github.honourednihilist'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    compileOnly(group: 'org.projectlombok', name: 'lombok', version: '1.16.16')
+    compile(group: 'com.github.javaparser', name: 'javaparser-core', version: '3.2.12')
+}
+
+gradlePlugin {
+    plugins {
+        gradleKafkaDeserializers{
+            id = 'com.github.honourednihilist.gradle-kafka-deserializers'
+            implementationClass = 'com.github.honourednihilist.gradle.kafka.deserializers.GradleKafkaDeserializersPlugin'
+        }
+    }
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+}
+
+pluginBundle {
+    website = 'https://github.com/honourednihilist/gradle-kafka-deserializers'
+    vcsUrl = 'https://github.com/honourednihilist/gradle-kafka-deserializers'
+
+    plugins {
+        gradlePostgresqlEmbedded {
+            id = 'com.github.honourednihilist.gradle-kafka-deserializers'
+            displayName = 'gradle-postgresql-embedded'
+            description = ' Gradle plugin to generate kafka deserializers for thrift classes '
+            tags = ['thrift', 'kafka', 'deserializer']
+        }
+    }
+}
+
+gradle.buildFinished {
+    println("\nFinished: " + new Date())
+}
