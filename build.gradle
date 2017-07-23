@@ -43,9 +43,9 @@ pluginBundle {
     vcsUrl = 'https://github.com/honourednihilist/gradle-kafka-deserializers'
 
     plugins {
-        gradlePostgresqlEmbedded {
+        gradleKafkaDeserializers {
             id = 'com.github.honourednihilist.gradle-kafka-deserializers'
-            displayName = 'gradle-postgresql-embedded'
+            displayName = 'gradle-kafka-deserializers'
             description = ' Gradle plugin to generate kafka deserializers for thrift classes '
             tags = ['thrift', 'kafka', 'deserializer']
         }
